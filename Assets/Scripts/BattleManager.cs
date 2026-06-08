@@ -96,11 +96,20 @@ public class BattleManager : MonoBehaviour
         UpdateUI();
     }
 
-    void DrawUpToHandSize()
+    void DrawCardsAtEndOfTurn(int baseDrawCount)
     {
-        int needed = handSize - playerHand.Count;
-        Debug.Log($"Добираем {needed} карт до {handSize}");
-        for (int i = 0; i < needed; i++) DrawCard();
+        int maxDraw = handSize - playerHand.Count;
+        if (maxDraw <= 0)
+        {
+            Debug.Log("Рука уже полна или превышает лимит, добор карт не производится");
+            return;
+        }
+        int cardsToDraw = Mathf.Min(baseDrawCount, maxDraw);
+        Debug.Log($"Добираем {cardsToDraw} карт (из {baseDrawCount} возможных) до лимита {handSize}");
+        for (int i = 0; i < cardsToDraw; i++)
+        {
+            DrawCard();
+        }
     }
 
     IEnumerator GameLoop()
@@ -117,7 +126,7 @@ public class BattleManager : MonoBehaviour
                 if (isResetting) yield break;
                 if (!battleEnded)
                 {
-                    DrawUpToHandSize();
+                    DrawCardsAtEndOfTurn(2);  // вместо DrawUpToHandSize()
                     EndTurn();
                 }
             }
