@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1c5f45e4ed2749a2e4afde5fce5d1, type: 3}
+  m_Name: Eternis,BalanceKeeperData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Eternis, Balance Keeper
+  hp: 1200
+  baseDamage: 40
+  defense: 25
+  aiType: 3
+  elementAffinity: 0
+  deck:
+  - {fileID: 11400000, guid: 5ffb7c1ae77bac042884e4daa334d1c5, type: 2}
+  - {fileID: 11400000, guid: 78b16b4ed2656294fb1094c58175e174, type: 2}
+  - {fileID: 11400000, guid: 59d8596821e20514f955dfb8703a425c, type: 2}
+  - {fileID: 11400000, guid: 793902ec29cc1a640b89d2e785efdf0d, type: 2}
+  - {fileID: 11400000, guid: bdcca44f973d2484db25c0da4cb3bc39, type: 2}
+  - {fileID: 11400000, guid: 007eefd789392ff4e9096a318202339b, type: 2}
+  - {fileID: 11400000, guid: 276a1043d7dd1604784f5dfced0d4e58, type: 2}
+  - {fileID: 11400000, guid: 4bd8ffeca01d4f442b67aeaf1867170c, type: 2}
+  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
+  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
+  specialFeature: 

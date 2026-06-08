@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1c5f45e4ed2749a2e4afde5fce5d1, type: 3}
+  m_Name: Gor,EarthWardenData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Gor, Earth Warden
+  hp: 750
+  baseDamage: 24
+  defense: 22
+  aiType: 1
+  elementAffinity: 2
+  deck:
+  - {fileID: 11400000, guid: 882b4465d9604824fb4920ed85c16332, type: 2}
+  - {fileID: 11400000, guid: 882b4465d9604824fb4920ed85c16332, type: 2}
+  - {fileID: 11400000, guid: bdcca44f973d2484db25c0da4cb3bc39, type: 2}
+  - {fileID: 11400000, guid: bdcca44f973d2484db25c0da4cb3bc39, type: 2}
+  - {fileID: 11400000, guid: bdcca44f973d2484db25c0da4cb3bc39, type: 2}
+  - {fileID: 11400000, guid: ad7143e7d4e6a4a41b43bdab19f2b0e4, type: 2}
+  - {fileID: 11400000, guid: 276a1043d7dd1604784f5dfced0d4e58, type: 2}
+  specialFeature: 

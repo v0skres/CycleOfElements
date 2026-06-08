@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1c5f45e4ed2749a2e4afde5fce5d1, type: 3}
+  m_Name: VineHunterData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Vine Hunter
+  hp: 160
+  baseDamage: 17
+  defense: 8
+  aiType: 0
+  elementAffinity: 4
+  deck:
+  - {fileID: 11400000, guid: 43d75db22a6bf14488eb57782a0169d7, type: 2}
+  - {fileID: 11400000, guid: 43d75db22a6bf14488eb57782a0169d7, type: 2}
+  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
+  - {fileID: 11400000, guid: 8c89f93f61a058d42a644b43f5bfd029, type: 2}
+  - {fileID: 11400000, guid: 8c89f93f61a058d42a644b43f5bfd029, type: 2}
+  specialFeature: 

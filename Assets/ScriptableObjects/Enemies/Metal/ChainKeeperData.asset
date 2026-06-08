@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d1c5f45e4ed2749a2e4afde5fce5d1, type: 3}
+  m_Name: ChainKeeperData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Chain Keeper
+  hp: 170
+  baseDamage: 15
+  defense: 12
+  aiType: 2
+  elementAffinity: 3
+  deck:
+  - {fileID: 11400000, guid: 09c7de94945c3694597acdccd06a1dab, type: 2}
+  - {fileID: 11400000, guid: 95399f45188471c4496ce4311dd549de, type: 2}
+  - {fileID: 11400000, guid: 007eefd789392ff4e9096a318202339b, type: 2}
+  - {fileID: 11400000, guid: 238d14338da5e3b4da697919a0005080, type: 2}
+  - {fileID: 11400000, guid: 4bd8ffeca01d4f442b67aeaf1867170c, type: 2}
+  specialFeature: 
