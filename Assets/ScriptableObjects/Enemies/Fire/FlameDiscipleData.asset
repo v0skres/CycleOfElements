@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlameDiscipleData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Flame Disciple
-  hp: 120
+  hp: 12
   baseDamage: 14
   defense: 5
   aiType: 0

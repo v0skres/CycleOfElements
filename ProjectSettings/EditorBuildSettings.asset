@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Fire.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/MainMenu.unity
+    guid: 55bf7ca034aa1844b9b90ef6430743cd
   - enabled: 1
     path: Assets/Scenes/WorldMap.unity
     guid: 965fee5da074bc342985d45ade8a609b
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 55bf7ca034aa1844b9b90ef6430743cd
+    path: Assets/Scenes/Fire.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Water2.unity
+    path: Assets/Scenes/Water.unity
     guid: 421aa6512354bef4d9eca2eb4b09ff9d
   - enabled: 1
     path: Assets/Scenes/Earth.unity

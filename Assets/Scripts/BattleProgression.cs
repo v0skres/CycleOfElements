@@ -7,16 +7,21 @@ public class BattleProgression : MonoBehaviour
     public List<EnemyData> enemiesInZone;
     private int currentIndex = 0;
     private bool isTransitioning = false;
+    private int zoneIndex; // индекс текущей зоны
 
     public Enemy enemyComponent;
     public BattleManager battleManager;
 
     void Start()
     {
-        if (enemyComponent == null)
-            enemyComponent = FindObjectOfType<Enemy>();
-        if (battleManager == null)
-            battleManager = FindObjectOfType<BattleManager>();
+        if (enemyComponent == null) enemyComponent = FindObjectOfType<Enemy>();
+        if (battleManager == null) battleManager = FindObjectOfType<BattleManager>();
+
+        // Получаем индекс зоны из GameManager
+        if (GameManager.Instance != null)
+            zoneIndex = GameManager.Instance.currentZoneIndex;
+        else
+            zoneIndex = 0; // запасной вариант
 
         LoadCurrentEnemy();
     }
@@ -57,6 +62,15 @@ public class BattleProgression : MonoBehaviour
         else
         {
             Debug.Log("=== ВСЕ ВРАГИ ПОБЕЖДЕНЫ! Локация завершена. ===");
+            if (GameManager.Instance != null)
+            {
+                // Если это не последняя зона (не финальная) – разблокируем следующую
+                if (zoneIndex < GameManager.Instance.GetZonesCount() - 1)
+                    GameManager.Instance.UnlockNextZone(zoneIndex);
+                else
+                    Debug.Log("Поздравляем! Игра пройдена!"); // можно показать титры
+            }
+            GameManager.Instance.BackToWorldMap();
             isTransitioning = false;
         }
     }

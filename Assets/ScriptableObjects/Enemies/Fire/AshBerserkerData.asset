@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AshBerserkerData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Ash Berserker
-  hp: 160
+  hp: 16
   baseDamage: 18
   defense: 4
   aiType: 0

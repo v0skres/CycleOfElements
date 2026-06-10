@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KaenBossData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Kaen, Flame Leader
-  hp: 550
+  hp: 55
   baseDamage: 28
   defense: 12
   aiType: 2

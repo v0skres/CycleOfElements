@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 40612983}
   - component: {fileID: 40612982}
   - component: {fileID: 40612981}
+  - component: {fileID: 40612984}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -201,19 +202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 40612982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Earth
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &40612982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +241,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40612979}
   m_CullTransparentMesh: 1
+--- !u!114 &40612984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40612979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 2
+  sceneName: Earth
 --- !u!1 &48518488
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +267,7 @@ GameObject:
   - component: {fileID: 48518492}
   - component: {fileID: 48518491}
   - component: {fileID: 48518490}
+  - component: {fileID: 48518493}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -334,19 +338,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 48518491}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Finale
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &48518491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +377,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48518488}
   m_CullTransparentMesh: 1
+--- !u!114 &48518493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48518488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 5
+  sceneName: Finale
 --- !u!1 &81011300
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +756,7 @@ GameObject:
   - component: {fileID: 600092598}
   - component: {fileID: 600092597}
   - component: {fileID: 600092596}
+  - component: {fileID: 600092599}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -820,19 +827,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 600092597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Wood
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &600092597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,6 +866,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600092594}
   m_CullTransparentMesh: 1
+--- !u!114 &600092599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600092594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 4
+  sceneName: Wood
 --- !u!1 &764980420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1029,7 @@ GameObject:
   - component: {fileID: 783522711}
   - component: {fileID: 783522710}
   - component: {fileID: 783522709}
+  - component: {fileID: 783522712}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1090,19 +1100,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783522710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Fire
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &783522710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1139,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783522707}
   m_CullTransparentMesh: 1
+--- !u!114 &783522712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783522707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 0
+  sceneName: Fire
 --- !u!1 &966898117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1339643781}
-  - component: {fileID: 1339643780}
+  - component: {fileID: 1339643782}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1508,20 +1520,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1339643780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339643779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee9f4e440f7efc438515d940b41f343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  selectedZoneIndex: 0
-  selectedZoneName: 
 --- !u!4 &1339643781
 Transform:
   m_ObjectHideFlags: 0
@@ -1537,6 +1535,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1339643782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339643779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7a84115dcec8f4683a38d72acbf837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldMapUI
+  zoneButtons:
+  - {fileID: 783522709}
+  - {fileID: 1413922328}
+  - {fileID: 40612981}
+  - {fileID: 1807489847}
+  - {fileID: 600092596}
+  - {fileID: 48518490}
 --- !u!1 &1378856832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1674,7 @@ GameObject:
   - component: {fileID: 1413922330}
   - component: {fileID: 1413922329}
   - component: {fileID: 1413922328}
+  - component: {fileID: 1413922331}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1727,19 +1745,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1413922329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Water2
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1413922329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1784,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413922326}
   m_CullTransparentMesh: 1
+--- !u!114 &1413922331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413922326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 1
+  sceneName: Water
 --- !u!1 &1596486517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1947,7 @@ GameObject:
   - component: {fileID: 1807489849}
   - component: {fileID: 1807489848}
   - component: {fileID: 1807489847}
+  - component: {fileID: 1807489850}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1997,19 +2018,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807489848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1339643780}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectZone
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Metal
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1807489848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2048,6 +2057,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807489845}
   m_CullTransparentMesh: 1
+--- !u!114 &1807489850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807489845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07aadf89057b0c46be1aecb40edd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneButton
+  zoneIndex: 3
+  sceneName: Metal
 --- !u!1 &1906598392
 GameObject:
   m_ObjectHideFlags: 0
