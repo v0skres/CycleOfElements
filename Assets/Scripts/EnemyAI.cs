@@ -19,6 +19,20 @@ public static class EnemyAI
         }
 
         float modifier = bm.CalculateDamageModifier(chosenCard.element);
+
+        if (bm.uiManager != null)
+        {
+            string comboMsg = "";
+            if (Mathf.Approximately(modifier, 2.0f))
+                comboMsg = "œ–≈ŒƒŒÀ≈Õ»≈ x2!";
+            else if (Mathf.Approximately(modifier, 1.5f))
+                comboMsg = "œŒ–Œ∆ƒ≈Õ»≈ x1.5!";
+            else if (Mathf.Approximately(modifier, 0.7f))
+                comboMsg = "—À¿¡¿ﬂ —“»’»ﬂ x0.7!";
+            if (!string.IsNullOrEmpty(comboMsg))
+                bm.uiManager.ShowEnemyCombo(comboMsg);
+        }
+
         float weakenMod = BattleManager.Instance.GetDamageModifierFromWeaken(BattleManager.Instance.enemyStatuses);
         int finalDamage = Mathf.RoundToInt(chosenCard.damage * modifier * weakenMod);
 
@@ -28,6 +42,11 @@ public static class EnemyAI
                 int dmg = Mathf.Max(1, finalDamage - bm.playerDefense);
                 bm.playerHP -= dmg;
                 Debug.Log($"¬‡„ Ì‡Ì∏Ò {dmg} ÛÓÌ‡");
+                if (bm.playerHP <= 0)
+                {
+                    Debug.Log("»„ÓÍ Ï∏Ú‚, ‚˚Á˚‚‡ÂÏ EndBattle");
+                    bm.EndBattle(false);
+                }
                 break;
             case CardData.CardType.Defense:
                 enemy.defense += finalDamage;
@@ -49,5 +68,6 @@ public static class EnemyAI
         bm.previousFieldElement = bm.currentFieldElement;
         bm.currentFieldElement = chosenCard.element;
         yield return new WaitForSeconds(1f);
+
     }
 }

@@ -169,6 +169,20 @@ public class BattleManager : MonoBehaviour
         float modifier = CalculateDamageModifier(card.element);
         ApplyCardEffect(card, modifier);
 
+        // Показываем сообщение о модификаторе
+        if (uiManager != null)
+        {
+            string comboMsg = "";
+            if (Mathf.Approximately(modifier, 2.0f))
+                comboMsg = "ПРЕОДОЛЕНИЕ x2!";
+            else if (Mathf.Approximately(modifier, 1.5f))
+                comboMsg = "ПОРОЖДЕНИЕ x1.5!";
+            else if (Mathf.Approximately(modifier, 0.7f))
+                comboMsg = "СЛАБАЯ СТИХИЯ x0.7!";
+            if (!string.IsNullOrEmpty(comboMsg))
+                uiManager.ShowPlayerCombo(comboMsg);
+        }
+
         playerHand.Remove(card);
         playerDiscard.Add(card);
         Destroy(cardDisplay.gameObject);
@@ -328,6 +342,12 @@ public class BattleManager : MonoBehaviour
             if (effect.IsExpired)
                 statuses.RemoveAt(i);
         }
+
+        if (playerHP <= 0)
+        {
+            Debug.Log("Игрок умер от эффекта");
+            EndBattle(false);
+        }
     }
 
     void EndTurn()
@@ -367,7 +387,7 @@ public class BattleManager : MonoBehaviour
         UpdateUI();
     }
 
-    void EndBattle(bool victory)
+    public void EndBattle(bool victory)
     {
         if (battleEnded) return;
         battleEnded = true;
@@ -377,12 +397,12 @@ public class BattleManager : MonoBehaviour
             Debug.Log("Победа! Показываем кнопку перехода");
             if (uiManager != null)
                 uiManager.ShowNextBattleButton(true);
-            else
-                Debug.LogError("uiManager не назначен в BattleManager");
         }
         else
         {
-            Debug.Log("Поражение...");
+            Debug.Log("Поражение... Показываем экран Game Over");
+            if (uiManager != null)
+                uiManager.ShowGameOver();
         }
     }
 

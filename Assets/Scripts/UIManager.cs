@@ -14,6 +14,13 @@ public class UIManager : MonoBehaviour
     public TMP_Text enemyNameText;
     public Button nextBattleButton;
 
+    public TMP_Text defenseText;          // защита игрока
+    public TMP_Text enemyDefenseText;     // защита врага
+    public TMP_Text playerComboText;   // левый нижний/верхний угол
+    public TMP_Text enemyComboText;    // правый нижний/верхний угол
+
+    public GameOverUI gameOverUI;
+
     private bool isSubscribed = false;
 
     void Awake()
@@ -33,6 +40,9 @@ public class UIManager : MonoBehaviour
             nextBattleButton.gameObject.SetActive(false);
             nextBattleButton.onClick.AddListener(OnNextBattleClicked);
         }
+
+        if (playerComboText != null) playerComboText.gameObject.SetActive(false);
+        if (enemyComboText != null) enemyComboText.gameObject.SetActive(false);
     }
 
     void Subscribe()
@@ -74,6 +84,55 @@ public class UIManager : MonoBehaviour
                 if (display != null) display.Setup(card);
             }
         }
+
+        // Защита
+        if (defenseText != null)
+            defenseText.text = $"Защита: {bm.playerDefense}";
+        if (enemyDefenseText != null && bm.currentEnemy != null)
+            enemyDefenseText.text = $"Защита: {bm.currentEnemy.defense}";
+    }
+
+    public void ShowPlayerCombo(string message, float duration = 1.5f)
+    {
+        if (playerComboText == null) return;
+        playerComboText.text = message;
+        playerComboText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HidePlayerCombo));
+        Invoke(nameof(HidePlayerCombo), duration);
+    }
+
+    void HidePlayerCombo()
+    {
+        if (playerComboText != null) playerComboText.gameObject.SetActive(false);
+    }
+
+    public void ShowEnemyCombo(string message, float duration = 1.5f)
+    {
+        if (enemyComboText == null) return;
+        enemyComboText.text = message;
+        enemyComboText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HideEnemyCombo));
+        Invoke(nameof(HideEnemyCombo), duration);
+    }
+
+    void HideEnemyCombo()
+    {
+        if (enemyComboText != null) enemyComboText.gameObject.SetActive(false);
+    }
+
+    public void ShowGameOver()
+    {
+        Debug.Log("ShowGameOver вызван");
+        if (gameOverUI == null)
+        {
+            gameOverUI = FindObjectOfType<GameOverUI>();
+            if (gameOverUI == null)
+            {
+                Debug.LogError("GameOverUI не найден в сцене! Создайте объект с компонентом GameOverUI.");
+                return;
+            }
+        }
+        gameOverUI.ShowGameOver();
     }
 
     void OnNextBattleClicked()
