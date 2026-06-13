@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gor,EarthWardenData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Gor, Earth Warden
-  hp: 750
+  hp: 300
   baseDamage: 24
   defense: 22
   aiType: 1

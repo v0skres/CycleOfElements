@@ -18,6 +18,9 @@ public static class EnemyAI
             yield break;
         }
 
+        if (bm.uiManager != null)
+            bm.uiManager.ShowEnemyCard(chosenCard.cardName);
+
         float modifier = bm.CalculateDamageModifier(chosenCard.element);
 
         if (bm.uiManager != null)
@@ -41,6 +44,9 @@ public static class EnemyAI
             case CardData.CardType.Attack:
                 int dmg = Mathf.Max(1, finalDamage - bm.playerDefense);
                 bm.playerHP -= dmg;
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance.playerHit);
+                CameraShake.Instance?.Shake(0.2f, 0.1f);
+                bm.uiManager?.FlashRed();
                 Debug.Log($"Враг нанёс {dmg} урона");
                 if (bm.playerHP <= 0)
                 {

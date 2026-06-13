@@ -19,6 +19,12 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerComboText;   // левый нижний/верхний угол
     public TMP_Text enemyComboText;    // правый нижний/верхний угол
 
+    public TMP_Text enemyCardText;
+
+    public TMP_Text turnTimerText;
+
+    public Image damageOverlay;
+
     public GameOverUI gameOverUI;
 
     private bool isSubscribed = false;
@@ -43,6 +49,9 @@ public class UIManager : MonoBehaviour
 
         if (playerComboText != null) playerComboText.gameObject.SetActive(false);
         if (enemyComboText != null) enemyComboText.gameObject.SetActive(false);
+
+        if (enemyCardText != null)
+            enemyCardText.gameObject.SetActive(false);
     }
 
     void Subscribe()
@@ -118,6 +127,48 @@ public class UIManager : MonoBehaviour
     void HideEnemyCombo()
     {
         if (enemyComboText != null) enemyComboText.gameObject.SetActive(false);
+    }
+
+    public void ShowEnemyCard(string cardName, float duration = 1.5f)
+    {
+        if (enemyCardText == null) return;
+        enemyCardText.text = $"Враг использовал: {cardName}";
+        enemyCardText.gameObject.SetActive(true);
+        CancelInvoke(nameof(HideEnemyCard));
+        Invoke(nameof(HideEnemyCard), duration);
+    }
+
+    void HideEnemyCard()
+    {
+        if (enemyCardText != null)
+            enemyCardText.gameObject.SetActive(false);
+    }
+
+    public void UpdateTurnTimer(float seconds)
+    {
+        if (turnTimerText != null)
+        {
+            int secs = Mathf.CeilToInt(seconds);
+            turnTimerText.text = $"Ход: {secs} с";
+            // можно подсвечивать красным, если мало времени
+            if (secs <= 3) turnTimerText.color = Color.red;
+            else if (secs <= 5) turnTimerText.color = Color.yellow;
+            else turnTimerText.color = Color.white;
+        }
+    }
+
+    public void FlashRed()
+    {
+        if (damageOverlay == null) return;
+        damageOverlay.color = new Color(1, 0, 0, 0.5f);
+        CancelInvoke(nameof(HideOverlay));
+        Invoke(nameof(HideOverlay), 0.3f);
+    }
+
+    void HideOverlay()
+    {
+        if (damageOverlay != null)
+            damageOverlay.color = new Color(1, 0, 0, 0);
     }
 
     public void ShowGameOver()

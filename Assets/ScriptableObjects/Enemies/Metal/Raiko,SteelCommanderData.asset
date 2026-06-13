@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Raiko,SteelCommanderData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Raiko, Steel Commander
-  hp: 700
+  hp: 300
   baseDamage: 27
   defense: 20
   aiType: 2

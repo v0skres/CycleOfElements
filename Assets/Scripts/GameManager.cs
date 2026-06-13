@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        PlayerPrefs.DeleteAll(); // стирает все сохранённые данные
+        LoadProgress(); // загрузит настройки по умолчанию (только огонь открыт)
     }
 
     public void SelectZone(string sceneName, int zoneIndex)

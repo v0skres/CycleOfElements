@@ -17,5 +17,6 @@ MonoBehaviour:
   type: 1
   damage: 10
   description: "+10 \u0437\u0430\u0449\u0438\u0442\u044B"
+  cardImage: {fileID: 0}
   statusEffect: 0
   statusValue: 0

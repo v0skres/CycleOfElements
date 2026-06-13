@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sylva,ForestGuardianData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Sylva, Forest Guardian
-  hp: 650
+  hp: 320
   baseDamage: 23
   defense: 18
   aiType: 2

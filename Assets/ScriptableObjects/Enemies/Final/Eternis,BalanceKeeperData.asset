@@ -13,20 +13,35 @@ MonoBehaviour:
   m_Name: Eternis,BalanceKeeperData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Eternis, Balance Keeper
-  hp: 1200
+  hp: 400
   baseDamage: 40
   defense: 25
   aiType: 3
   elementAffinity: 0
   deck:
-  - {fileID: 11400000, guid: 5ffb7c1ae77bac042884e4daa334d1c5, type: 2}
-  - {fileID: 11400000, guid: 78b16b4ed2656294fb1094c58175e174, type: 2}
-  - {fileID: 11400000, guid: 59d8596821e20514f955dfb8703a425c, type: 2}
-  - {fileID: 11400000, guid: 793902ec29cc1a640b89d2e785efdf0d, type: 2}
+  - {fileID: 11400000, guid: 8c89f93f61a058d42a644b43f5bfd029, type: 2}
+  - {fileID: 11400000, guid: 8d8d4a9719f2d9948ae3b44fb2bd64bf, type: 2}
+  - {fileID: 11400000, guid: 535c90b3e74f6054aa99790794a75a61, type: 2}
   - {fileID: 11400000, guid: bdcca44f973d2484db25c0da4cb3bc39, type: 2}
+  - {fileID: 11400000, guid: 6a8e34ded32a5aa4b967ab7c952aa09c, type: 2}
+  - {fileID: 11400000, guid: 78b16b4ed2656294fb1094c58175e174, type: 2}
+  - {fileID: 11400000, guid: 5ffb7c1ae77bac042884e4daa334d1c5, type: 2}
+  - {fileID: 11400000, guid: 09f27e21cc801dd40949b1f242bd74d6, type: 2}
+  - {fileID: 11400000, guid: 4f6f2d88ebb51b043b9379fccb3e51ec, type: 2}
   - {fileID: 11400000, guid: 007eefd789392ff4e9096a318202339b, type: 2}
-  - {fileID: 11400000, guid: 276a1043d7dd1604784f5dfced0d4e58, type: 2}
+  - {fileID: 11400000, guid: 238d14338da5e3b4da697919a0005080, type: 2}
+  - {fileID: 11400000, guid: 09c7de94945c3694597acdccd06a1dab, type: 2}
+  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
+  - {fileID: 11400000, guid: 7668a4e535e464f43a6e508de7e92ecc, type: 2}
+  - {fileID: 11400000, guid: 716efdd736d5f12489c4a66d56ab7f08, type: 2}
+  - {fileID: 11400000, guid: 95399f45188471c4496ce4311dd549de, type: 2}
+  - {fileID: 11400000, guid: 882b4465d9604824fb4920ed85c16332, type: 2}
   - {fileID: 11400000, guid: 4bd8ffeca01d4f442b67aeaf1867170c, type: 2}
-  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
-  - {fileID: 11400000, guid: 1e5eda8622d93724588ae51553bb66e9, type: 2}
+  - {fileID: 11400000, guid: ad7143e7d4e6a4a41b43bdab19f2b0e4, type: 2}
+  - {fileID: 11400000, guid: 43d75db22a6bf14488eb57782a0169d7, type: 2}
+  - {fileID: 11400000, guid: 793902ec29cc1a640b89d2e785efdf0d, type: 2}
+  - {fileID: 11400000, guid: 59d8596821e20514f955dfb8703a425c, type: 2}
+  - {fileID: 11400000, guid: 276a1043d7dd1604784f5dfced0d4e58, type: 2}
+  - {fileID: 11400000, guid: 781792e51bc53db40848ced8c13813cc, type: 2}
+  - {fileID: 11400000, guid: 84a7236971be4f740a5f73efeb61ee25, type: 2}
   specialFeature: 

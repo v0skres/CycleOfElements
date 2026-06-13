@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LavaMonkData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Lava Monk
-  hp: 18
+  hp: 180
   baseDamage: 15
   defense: 8
   aiType: 2

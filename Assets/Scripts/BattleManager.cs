@@ -21,6 +21,7 @@ public class BattleManager : MonoBehaviour
     private bool battleEnded = false;
     private bool endTurnRequested = false;
     private bool isResetting = false;
+    public bool IsBattleEnded => battleEnded;
 
     public List<CardData> playerDeck;
     public List<CardData> startingDeck; // эталонная колода для сброса
@@ -33,6 +34,9 @@ public class BattleManager : MonoBehaviour
 
     public List<StatusEffect> playerStatuses = new List<StatusEffect>();
     public List<StatusEffect> enemyStatuses = new List<StatusEffect>();
+
+    public float turnTimeLimit = 15f;      // лимит времени на ход (сек)
+    private Coroutine turnTimerCoroutine;   // ссылка на корутину таймера
 
     public UIManager uiManager;
 
@@ -112,6 +116,40 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    void StartTurnTimer()
+    {
+        if (turnTimerCoroutine != null) StopTurnTimer();
+        turnTimerCoroutine = StartCoroutine(TurnTimerRoutine());
+    }
+
+    void StopTurnTimer()
+    {
+        if (turnTimerCoroutine != null)
+        {
+            StopCoroutine(turnTimerCoroutine);
+            turnTimerCoroutine = null;
+        }
+    }
+
+    IEnumerator TurnTimerRoutine()
+    {
+        float remaining = turnTimeLimit;
+        while (remaining > 0)
+        {
+            if (uiManager != null)
+                uiManager.UpdateTurnTimer(remaining);
+            yield return new WaitForSeconds(1f);
+            remaining--;
+        }
+        // Время вышло
+        if (isPlayerTurn && !battleEnded && !isResetting)
+        {
+            Debug.Log("Время хода истекло! Передаём ход врагу.");
+            RequestEndTurn();
+        }
+        turnTimerCoroutine = null;
+    }
+
     IEnumerator GameLoop()
     {
         battleEnded = false;
@@ -120,9 +158,11 @@ public class BattleManager : MonoBehaviour
             if (isResetting) yield break;
             if (isPlayerTurn)
             {
+                StartTurnTimer();
                 endTurnRequested = false;
                 waitingForAI = false;
                 yield return new WaitUntil(() => endTurnRequested || battleEnded || isResetting);
+                StopTurnTimer();
                 if (isResetting) yield break;
                 if (!battleEnded)
                 {
@@ -198,6 +238,9 @@ public class BattleManager : MonoBehaviour
             EndBattle(true);
             return; // важно – прекращаем выполнение, чтобы не было дальнейших действий
         }
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.cardPlay);
     }
 
     public float CalculateDamageModifier(CardData.Element cardElement)
@@ -269,6 +312,7 @@ public class BattleManager : MonoBehaviour
                 int damageWithWeaken = Mathf.RoundToInt(finalDamage * weakenMod);
                 int damage = Mathf.Max(1, damageWithWeaken - currentEnemy.defense);
                 currentEnemy.hp -= damage;
+                AudioManager.Instance?.PlaySFX(AudioManager.Instance.enemyHit);
                 Debug.Log($"Нанесено {damage} урона (ослабление: {weakenMod}). Осталось HP врага: {currentEnemy.hp}");
                 break;
             case CardData.CardType.Defense:
@@ -352,6 +396,8 @@ public class BattleManager : MonoBehaviour
 
     void EndTurn()
     {
+        StopTurnTimer();
+
         isPlayerTurn = !isPlayerTurn;
 
         if (isPlayerTurn)
@@ -394,12 +440,14 @@ public class BattleManager : MonoBehaviour
 
         if (victory)
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.victory);
             Debug.Log("Победа! Показываем кнопку перехода");
             if (uiManager != null)
                 uiManager.ShowNextBattleButton(true);
         }
         else
         {
+            AudioManager.Instance?.PlaySFX(AudioManager.Instance.defeat);
             Debug.Log("Поражение... Показываем экран Game Over");
             if (uiManager != null)
                 uiManager.ShowGameOver();
@@ -431,6 +479,8 @@ public class BattleManager : MonoBehaviour
         playerDiscard.Clear();
         ShuffleDeck();
         DrawInitialHand();
+
+        StopTurnTimer();
 
         // Сброс поля
         currentFieldElement = CardData.Element.Fire;

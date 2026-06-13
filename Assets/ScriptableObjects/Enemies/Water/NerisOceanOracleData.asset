@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NerisOceanOracleData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Neris, Ocean Oracle
-  hp: 600
+  hp: 300
   baseDamage: 25
   defense: 15
   aiType: 2
