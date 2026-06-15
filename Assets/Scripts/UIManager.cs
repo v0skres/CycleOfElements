@@ -1,6 +1,8 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,14 +16,17 @@ public class UIManager : MonoBehaviour
     public TMP_Text enemyNameText;
     public Button nextBattleButton;
 
-    public TMP_Text defenseText;          // защита игрока
-    public TMP_Text enemyDefenseText;     // защита врага
-    public TMP_Text playerComboText;   // левый нижний/верхний угол
-    public TMP_Text enemyComboText;    // правый нижний/верхний угол
+    public TMP_Text defenseText;          // Р·Р°С‰РёС‚Р° РёРіСЂРѕРєР°
+    public TMP_Text enemyDefenseText;     // Р·Р°С‰РёС‚Р° РІСЂР°РіР°
+    public TMP_Text playerComboText;   // Р»РµРІС‹Р№ РЅРёР¶РЅРёР№/РІРµСЂС…РЅРёР№ СѓРіРѕР»
+    public TMP_Text enemyComboText;    // РїСЂР°РІС‹Р№ РЅРёР¶РЅРёР№/РІРµСЂС…РЅРёР№ СѓРіРѕР»
 
     public TMP_Text enemyCardText;
 
     public TMP_Text turnTimerText;
+
+    public TMP_Text playerStatusText;
+    public TMP_Text enemyStatusText;
 
     public Image damageOverlay;
 
@@ -82,7 +87,7 @@ public class UIManager : MonoBehaviour
         if (currentFieldText != null) currentFieldText.text = bm.currentFieldElement.ToString();
         if (previousFieldText != null) previousFieldText.text = bm.previousFieldElement.ToString();
 
-        // Отрисовка руки
+        // РћС‚СЂРёСЃРѕРІРєР° СЂСѓРєРё
         if (handPanel != null && cardPrefab != null && bm.playerHand != null)
         {
             foreach (Transform child in handPanel) Destroy(child.gameObject);
@@ -94,11 +99,11 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        // Защита
+        // Р—Р°С‰РёС‚Р°
         if (defenseText != null)
-            defenseText.text = $"Защита: {bm.playerDefense}";
+            defenseText.text = $"Р—Р°С‰РёС‚Р°: {bm.playerDefense}";
         if (enemyDefenseText != null && bm.currentEnemy != null)
-            enemyDefenseText.text = $"Защита: {bm.currentEnemy.defense}";
+            enemyDefenseText.text = $"Р—Р°С‰РёС‚Р°: {bm.currentEnemy.defense}";
     }
 
     public void ShowPlayerCombo(string message, float duration = 1.5f)
@@ -132,7 +137,7 @@ public class UIManager : MonoBehaviour
     public void ShowEnemyCard(string cardName, float duration = 1.5f)
     {
         if (enemyCardText == null) return;
-        enemyCardText.text = $"Враг использовал: {cardName}";
+        enemyCardText.text = $"Р’СЂР°Рі РёСЃРїРѕР»СЊР·РѕРІР°Р»: {cardName}";
         enemyCardText.gameObject.SetActive(true);
         CancelInvoke(nameof(HideEnemyCard));
         Invoke(nameof(HideEnemyCard), duration);
@@ -149,8 +154,8 @@ public class UIManager : MonoBehaviour
         if (turnTimerText != null)
         {
             int secs = Mathf.CeilToInt(seconds);
-            turnTimerText.text = $"Ход: {secs} с";
-            // можно подсвечивать красным, если мало времени
+            turnTimerText.text = $"РҐРѕРґ: {secs} СЃ";
+            // РјРѕР¶РЅРѕ РїРѕРґСЃРІРµС‡РёРІР°С‚СЊ РєСЂР°СЃРЅС‹Рј, РµСЃР»Рё РјР°Р»Рѕ РІСЂРµРјРµРЅРё
             if (secs <= 3) turnTimerText.color = Color.red;
             else if (secs <= 5) turnTimerText.color = Color.yellow;
             else turnTimerText.color = Color.white;
@@ -171,15 +176,48 @@ public class UIManager : MonoBehaviour
             damageOverlay.color = new Color(1, 0, 0, 0);
     }
 
+    public void UpdatePlayerStatusIcons(List<StatusEffect> statuses)
+    {
+        UpdateStatusIcons(playerStatusText, statuses);
+    }
+
+    public void UpdateEnemyStatusIcons(List<StatusEffect> statuses)
+    {
+        UpdateStatusIcons(enemyStatusText, statuses);
+    }
+
+    private void UpdateStatusIcons(TMP_Text text, List<StatusEffect> statuses)
+    {
+        if (text == null) return;
+        string icons = "";
+        foreach (var effect in statuses)
+        {
+            if (effect.type == CardData.StatusEffect.Burn) icons += "Р“РѕСЂРµРЅРёРµ";
+            else if (effect.type == CardData.StatusEffect.Poison) icons += "РћС‚СЂР°РІР»РµРЅ";
+            else if (effect.type == CardData.StatusEffect.Weaken) icons += "РћСЃР»Р°Р±Р»РµРЅ";
+            // Stun РЅРµ РїРѕРєР°Р·С‹РІР°РµРј РїРѕСЃС‚РѕСЏРЅРЅРѕ
+        }
+        text.text = icons.Trim();
+    }
+
+    public void ShowStunMessage(bool isPlayer)
+    {
+        string message = isPlayer ? "Р’С‹ РѕРіР»СѓС€С‘РЅС‹!" : "Р’СЂР°Рі РѕРіР»СѓС€С‘РЅ!";
+        if (isPlayer)
+            ShowPlayerCombo(message, 1.5f);
+        else
+            ShowEnemyCombo(message, 1.5f);
+    }
+
     public void ShowGameOver()
     {
-        Debug.Log("ShowGameOver вызван");
+        Debug.Log("ShowGameOver РІС‹Р·РІР°РЅ");
         if (gameOverUI == null)
         {
             gameOverUI = FindObjectOfType<GameOverUI>();
             if (gameOverUI == null)
             {
-                Debug.LogError("GameOverUI не найден в сцене! Создайте объект с компонентом GameOverUI.");
+                Debug.LogError("GameOverUI РЅРµ РЅР°Р№РґРµРЅ РІ СЃС†РµРЅРµ! РЎРѕР·РґР°Р№С‚Рµ РѕР±СЉРµРєС‚ СЃ РєРѕРјРїРѕРЅРµРЅС‚РѕРј GameOverUI.");
                 return;
             }
         }
@@ -188,7 +226,7 @@ public class UIManager : MonoBehaviour
 
     void OnNextBattleClicked()
     {
-        Debug.Log("Нажата кнопка перехода к следующему врагу");
+        Debug.Log("РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РїРµСЂРµС…РѕРґР° Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІСЂР°РіСѓ");
         if (nextBattleButton != null)
             nextBattleButton.gameObject.SetActive(false);
 
@@ -196,7 +234,7 @@ public class UIManager : MonoBehaviour
         if (progression != null)
             progression.ProceedToNextEnemy();
         else
-            Debug.LogError("BattleProgression не найден");
+            Debug.LogError("BattleProgression РЅРµ РЅР°Р№РґРµРЅ");
     }
 
     public void ShowNextBattleButton(bool show)

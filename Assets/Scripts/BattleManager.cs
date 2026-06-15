@@ -353,6 +353,18 @@ public class BattleManager : MonoBehaviour
         {
             list.Add(new StatusEffect(type, value, 2));
         }
+
+        if (uiManager != null)
+        {
+            uiManager.UpdatePlayerStatusIcons(playerStatuses);
+            uiManager.UpdateEnemyStatusIcons(enemyStatuses);
+        }
+
+        if (type == CardData.StatusEffect.Stun && uiManager != null)
+        {
+            bool isPlayer = (list == playerStatuses);
+            uiManager.ShowStunMessage(isPlayer);
+        }
     }
 
 
@@ -427,6 +439,12 @@ public class BattleManager : MonoBehaviour
                 enemyStatuses.RemoveAll(s => s.type == CardData.StatusEffect.Stun);
                 EndTurn();
                 return;
+            }
+
+            if (uiManager != null)
+            {
+                uiManager.UpdatePlayerStatusIcons(playerStatuses);
+                uiManager.UpdateEnemyStatusIcons(enemyStatuses);
             }
         }
         OnTurnChanged?.Invoke();
