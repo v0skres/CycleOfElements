@@ -6,7 +6,6 @@ public class WorldMapIntro : MonoBehaviour
 
     void Start()
     {
-        // Показываем пролог только если его ещё не видели в этой сессии (или вообще)
         if (!PlayerPrefs.HasKey(PROLOGUE_SHOWN_KEY) || PlayerPrefs.GetInt(PROLOGUE_SHOWN_KEY) == 0)
         {
             ShowPrologue();
@@ -24,7 +23,6 @@ public class WorldMapIntro : MonoBehaviour
             Debug.LogWarning("DialogueManager.Instance не найден!");
     }
 
-    // Опционально: кнопка "История" на карте мира может вызывать этот метод повторно
     public void ShowPrologueAgain()
     {
         ShowPrologue();

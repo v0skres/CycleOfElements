@@ -17,11 +17,10 @@ public class BattleProgression : MonoBehaviour
         if (enemyComponent == null) enemyComponent = FindObjectOfType<Enemy>();
         if (battleManager == null) battleManager = FindObjectOfType<BattleManager>();
 
-        // Получаем индекс зоны из GameManager
         if (GameManager.Instance != null)
             zoneIndex = GameManager.Instance.currentZoneIndex;
         else
-            zoneIndex = 0; // запасной вариант
+            zoneIndex = 0; 
 
         LoadCurrentEnemy();
     }
@@ -64,7 +63,7 @@ public class BattleProgression : MonoBehaviour
             return;
         }
 
-        if (currentIndex == enemiesInZone.Count - 1 && DialogueManager.Instance != null) // босс
+        if (currentIndex == enemiesInZone.Count - 1 && DialogueManager.Instance != null) 
         {
             DialogueManager.Instance.ShowDialogue(GetBossDialogue(zoneIndex, true));
         }
@@ -90,7 +89,7 @@ public class BattleProgression : MonoBehaviour
 
         currentIndex++;
 
-        if (currentIndex == enemiesInZone.Count && DialogueManager.Instance != null) // только что победили босса
+        if (currentIndex == enemiesInZone.Count && DialogueManager.Instance != null) 
         {
             DialogueManager.Instance.ShowDialogue(GetBossDialogue(zoneIndex, false));
         }
@@ -105,11 +104,10 @@ public class BattleProgression : MonoBehaviour
             Debug.Log("=== ВСЕ ВРАГИ ПОБЕЖДЕНЫ! Локация завершена. ===");
             if (GameManager.Instance != null)
             {
-                // Если это не последняя зона (не финальная) – разблокируем следующую
                 if (zoneIndex < GameManager.Instance.GetZonesCount() - 1)
                     GameManager.Instance.UnlockNextZone(zoneIndex);
                 else
-                    Debug.Log("Поздравляем! Игра пройдена!"); // можно показать титры
+                    Debug.Log("Поздравляем! Игра пройдена!"); 
             }
             GameManager.Instance.BackToWorldMap();
             isTransitioning = false;
@@ -119,9 +117,7 @@ public class BattleProgression : MonoBehaviour
     IEnumerator DelayedLoadNextEnemy()
     {
         yield return new WaitForSeconds(0.5f);
-        // Сначала загружаем нового врага (обновляем currentEnemy)
         LoadCurrentEnemy();
-        // Затем сбрасываем состояние боя (колода, поле, здоровье) и перезапускаем цикл
         battleManager.ResetBattleForNextEnemy();
         isTransitioning = false;
     }

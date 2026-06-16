@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel;          // панель меню паузы
+    public GameObject pausePanel;          
     public Button continueButton;
     public Button exitToWorldMapButton;
-    public GameObject hintsPanel;          // панель с подсказками по стихиям (опционально)
+    public GameObject hintsPanel;          
 
     private bool isPaused = false;
 
@@ -56,7 +56,6 @@ public class PauseMenu : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("WorldMap");
     }
 
-    // Опционально: показать/скрыть панель подсказок
     public void ToggleHints()
     {
         if (hintsPanel != null)

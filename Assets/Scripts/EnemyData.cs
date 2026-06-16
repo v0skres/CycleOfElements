@@ -9,7 +9,7 @@ public class EnemyData : ScriptableObject
     public int baseDamage;
     public int defense;
     public EnemyAI.AIType aiType;
-    public CardData.Element elementAffinity; // стихия врага (для отображения)
+    public CardData.Element elementAffinity; 
     public List<CardData> deck;
     [TextArea] public string specialFeature;
 }

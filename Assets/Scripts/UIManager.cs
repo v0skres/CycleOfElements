@@ -18,8 +18,8 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text defenseText;          // защита игрока
     public TMP_Text enemyDefenseText;     // защита врага
-    public TMP_Text playerComboText;   // левый нижний/верхний угол
-    public TMP_Text enemyComboText;    // правый нижний/верхний угол
+    public TMP_Text playerComboText;   
+    public TMP_Text enemyComboText;    
 
     public TMP_Text enemyCardText;
 
@@ -87,7 +87,6 @@ public class UIManager : MonoBehaviour
         if (currentFieldText != null) currentFieldText.text = bm.currentFieldElement.ToString();
         if (previousFieldText != null) previousFieldText.text = bm.previousFieldElement.ToString();
 
-        // Отрисовка руки
         if (handPanel != null && cardPrefab != null && bm.playerHand != null)
         {
             foreach (Transform child in handPanel) Destroy(child.gameObject);
@@ -99,7 +98,6 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        // Защита
         if (defenseText != null)
             defenseText.text = $"Защита: {bm.playerDefense}";
         if (enemyDefenseText != null && bm.currentEnemy != null)
@@ -155,7 +153,6 @@ public class UIManager : MonoBehaviour
         {
             int secs = Mathf.CeilToInt(seconds);
             turnTimerText.text = $"Ход: {secs} с";
-            // можно подсвечивать красным, если мало времени
             if (secs <= 3) turnTimerText.color = Color.red;
             else if (secs <= 5) turnTimerText.color = Color.yellow;
             else turnTimerText.color = Color.white;
@@ -195,7 +192,6 @@ public class UIManager : MonoBehaviour
             if (effect.type == CardData.StatusEffect.Burn) icons += "Горение";
             else if (effect.type == CardData.StatusEffect.Poison) icons += "Отравлен";
             else if (effect.type == CardData.StatusEffect.Weaken) icons += "Ослаблен";
-            // Stun не показываем постоянно
         }
         text.text = icons.Trim();
     }

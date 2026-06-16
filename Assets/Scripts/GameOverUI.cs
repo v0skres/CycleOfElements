@@ -15,7 +15,7 @@ public class GameOverUI : MonoBehaviour
     {
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
-        Time.timeScale = 0f; // Приостанавливаем игру
+        Time.timeScale = 0f; 
     }
 
     public void RestartBattle()

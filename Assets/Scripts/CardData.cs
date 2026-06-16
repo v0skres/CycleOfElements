@@ -8,10 +8,10 @@ public class CardData : ScriptableObject
     public Element element;
     public enum CardType { Attack, Defense, Status, Combo }
     public CardType type;
-    public int damage;          // базовый урон/защита
+    public int damage;          //урон
     public string description;
     public Sprite cardImage;
     public enum StatusEffect { None, Burn, Poison, Weaken, Stun }
     public StatusEffect statusEffect;
-    public int statusValue;     // сила эффекта (например, 5 урона от отравления)
+    public int statusValue;     // сила эффекта 
 }

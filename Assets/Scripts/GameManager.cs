@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private const int TOTAL_ZONES = 6; // 0-Огонь,1-Вода,2-Земля,3-Металл,4-Дерево,5-Финальная
+    private const int TOTAL_ZONES = 6; // 0-Огонь,1-Вода,2-Земля,3-Металл,4-Дерево,5-Финал
     private bool[] zoneUnlocked;
     public int currentZoneIndex;
 
@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        PlayerPrefs.DeleteAll(); // стирает все сохранённые данные
-        LoadProgress(); // загрузит настройки по умолчанию (только огонь открыт)
+        PlayerPrefs.DeleteAll(); 
+        LoadProgress(); 
     }
 
     public void SelectZone(string sceneName, int zoneIndex)

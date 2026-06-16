@@ -19,13 +19,13 @@ public class Enemy : MonoBehaviour
         enemyName = data.enemyName;
         hp = data.hp;
         baseDamage = data.baseDamage;
-        baseDefense = data.defense;   // запоминаем базовую защиту
+        baseDefense = data.defense;   
         defense = baseDefense;
         aiType = data.aiType;
         deck = new List<CardData>(data.deck);
         hand.Clear();
         discard.Clear();
-        // Начальная рука: 3 карты
+        // Начальная рука
         for (int i = 0; i < 3 && deck.Count > 0; i++)
         {
             hand.Add(deck[0]);
@@ -80,7 +80,6 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator TakeTurn()
     {
-        // Сброс защиты до базовой в начале хода врага
         defense = baseDefense;
         Debug.Log($"Защита врага {enemyName} сброшена до {defense}");
 

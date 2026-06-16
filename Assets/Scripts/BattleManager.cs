@@ -166,7 +166,7 @@ public class BattleManager : MonoBehaviour
                 if (isResetting) yield break;
                 if (!battleEnded)
                 {
-                    DrawCardsAtEndOfTurn(2);  // вместо DrawUpToHandSize()
+                    DrawCardsAtEndOfTurn(2);  
                     EndTurn();
                 }
             }
@@ -209,7 +209,6 @@ public class BattleManager : MonoBehaviour
         float modifier = CalculateDamageModifier(card.element);
         ApplyCardEffect(card, modifier);
 
-        // Показываем сообщение о модификаторе
         if (uiManager != null)
         {
             string comboMsg = "";
@@ -231,12 +230,11 @@ public class BattleManager : MonoBehaviour
         currentFieldElement = card.element;
         UpdateUI();
 
-        // СМЕРТЬ ВРАГА – сразу вызываем EndBattle
         if (currentEnemy.hp <= 0)
         {
             Debug.Log("Враг мёртв, вызываем EndBattle");
             EndBattle(true);
-            return; // важно – прекращаем выполнение, чтобы не было дальнейших действий
+            return; 
         }
 
         if (AudioManager.Instance != null)
@@ -342,7 +340,6 @@ public class BattleManager : MonoBehaviour
 
     private void ApplyStatus(List<StatusEffect> list, CardData.StatusEffect type, int value)
     {
-        // Если эффект уже есть, можно усилить интенсивность или продлить длительность
         var existing = list.Find(s => s.type == type);
         if (existing != null)
         {
@@ -385,12 +382,9 @@ public class BattleManager : MonoBehaviour
                     Debug.Log($"{(isPlayer ? "Игрок" : "Враг")} получает {damage} урона от {effect.type}");
                     break;
                 case CardData.StatusEffect.Weaken:
-                    // weaken уменьшает урон на x% (реализуем в расчёте модификатора)
-                    // Здесь только логирование, эффект будет применяться в CalculateDamageModifier
                     Debug.Log($"{(isPlayer ? "Игрок" : "Враг")} ослаблен: -{effect.intensity}% урона");
                     break;
                 case CardData.StatusEffect.Stun:
-                    // stun пропускает ход (реализуем в управлении ходами)
                     Debug.Log($"{(isPlayer ? "Игрок" : "Враг")} оглушён");
                     break;
             }
@@ -486,11 +480,9 @@ public class BattleManager : MonoBehaviour
         playerStatuses.Clear();
         enemyStatuses.Clear();
 
-        // Лечение игрока
         playerHP = Mathf.Min(playerMaxHP, playerHP + Mathf.RoundToInt(playerMaxHP * 0.3f));
         playerDefense = 8;
 
-        // Восстановление колоды
         if (startingDeck != null && startingDeck.Count > 0)
             playerDeck = new List<CardData>(startingDeck);
         playerHand.Clear();
@@ -500,18 +492,14 @@ public class BattleManager : MonoBehaviour
 
         StopTurnTimer();
 
-        // Сброс поля
         currentFieldElement = CardData.Element.Fire;
         previousFieldElement = CardData.Element.Fire;
 
-        // Скрываем кнопку перехода
         if (uiManager != null)
             uiManager.ShowNextBattleButton(false);
 
-        // Запускаем новый цикл боя
         StartCoroutine(GameLoop());
 
-        // Обновляем UI
         OnUIUpdate?.Invoke();
         OnTurnChanged?.Invoke();
     }
