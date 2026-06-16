@@ -17,6 +17,6 @@ MonoBehaviour:
   type: 3
   damage: 10
   description: "\u0423\u043C\u043D\u043E\u0436\u0430\u0435\u0442 \u043A\u043E\u043C\u0431\u043E"
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 4051853549349518899, guid: f46d86bf34925e747a1fc7ae0bc65ecc, type: 3}
   statusEffect: 0
   statusValue: 0

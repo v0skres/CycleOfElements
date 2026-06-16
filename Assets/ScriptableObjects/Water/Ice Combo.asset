@@ -17,6 +17,6 @@ MonoBehaviour:
   type: 3
   damage: 7
   description: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: -6648203355445521028, guid: ace1401d8d133f54589091c8edb7b565, type: 3}
   statusEffect: 0
   statusValue: 0
